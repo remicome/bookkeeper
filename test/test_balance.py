@@ -15,3 +15,10 @@ def test_balance():
     ]
     balances = balance(transactions)
     assert balances[first] == 50 and balances[second] == -50
+
+
+def test_sum_of_balances(transactions):
+    """The balance sum should be zero."""
+    balances = balance(transactions)
+    summed_balance = sum(balances.values())
+    assert round(summed_balance, 2) == 0

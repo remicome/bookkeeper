@@ -26,24 +26,11 @@ def test_simple_settlement():
     )
 
 
-def test_sum_of_paiements():
+def test_sum_of_paiements(transactions):
     """
     The sum of all paiement values should equal the positive balance, up to the
     algorithm's precision.
     """
-    members = [
-        Member(name="first"),
-        Member(name="second"),
-        Member(name="third"),
-    ]
-    transactions = [
-        Transaction(
-            value=random.randint(0, 10),
-            payer=random.choice(members),
-            indebted=random.sample(members, k=random.randint(1, len(members))),
-        )
-        for _ in range(10)
-    ]
     paiements = settle(transactions)
     balances = balance(transactions)
 

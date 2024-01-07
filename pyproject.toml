@@ -1,0 +1,7 @@
+[project]
+name = "bookkeeper"
+version = "0.0.0"
+description = "Bookkeeping for group trips."
+authors = [
+    {name = "Rémi Côme", email ="remi.come@gmx.com"},
+]

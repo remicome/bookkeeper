@@ -30,7 +30,11 @@ def settle(transactions: typing.List[Transaction]) -> typing.List[Paiement]:
     paiements = []
     balances = balance(transactions)
 
-    while any(value != 0 for value in balances.values()):
+    # Avoid precision issues by rounding everything
+    balances = {member: round(value, 2) for member, value in balances.items()}
+    precision = 0.01
+
+    while any(abs(value) > 2 * precision for value in balances.values()):
         member_with_lowest_balance = min(balances, key=lambda k: balances[k])
         member_with_highest_balance = max(balances, key=lambda k: balances[k])
 

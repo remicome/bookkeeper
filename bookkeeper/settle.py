@@ -1,24 +1,11 @@
+from __future__ import annotations
+
 import dataclasses
 import typing
 
 from ._member import Member
 from ._transaction import Transaction
 from .balance import balance
-
-
-@dataclasses.dataclass
-class Paiement:
-    """A paiement to be issued.
-
-    Args:
-        * sender: issuer of the paiement
-        * recipient: recipient of the paiement
-        * value: currency value of the paiement
-    """
-
-    sender: Member
-    recipient: Member
-    value: float
 
 
 def settle(transactions: typing.List[Transaction]) -> typing.List[Paiement]:
@@ -52,3 +39,29 @@ def settle(transactions: typing.List[Transaction]) -> typing.List[Paiement]:
         balances[member_with_highest_balance] -= paiement_value
 
     return paiements
+
+
+@dataclasses.dataclass(repr=False)
+class Paiement:
+    """A paiement to be issued.
+
+    Args:
+        * sender: issuer of the paiement
+        * recipient: recipient of the paiement
+        * value: currency value of the paiement
+    """
+
+    sender: Member
+    recipient: Member
+    value: float
+
+    def __repr__(self) -> str:
+        return f"{self.sender.name} owes {self.value:.2f} to {self.recipient.name}."
+
+
+def _exists_positive(balances: typing.Mapping) -> bool:
+    return any(value > 0 for value in balances.values())
+
+
+def _exists_negative(balances: typing.Mapping) -> bool:
+    return any(value < 0 for value in balances.values())

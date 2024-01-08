@@ -10,10 +10,13 @@ class Discount(enum.Enum):
     P3 = 1.25
 
 
-@dataclasses.dataclass(frozen=True)
+@dataclasses.dataclass(frozen=True, repr=False)
 class Member:
     """A member of the group whose expenses should be shared."""
 
     name: str
     discount: Discount = dataclasses.field(hash=False, default=Discount.P2)
     drinks_alcohol: bool = dataclasses.field(hash=False, default=False)
+
+    def __repr__(self) -> str:
+        return self.name

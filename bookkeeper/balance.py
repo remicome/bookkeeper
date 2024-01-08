@@ -12,9 +12,13 @@ def balance(transactions: typing.List[Transaction]) -> typing.Mapping[Member, fl
         balances[transaction.payer] = (
             balances.get(transaction.payer, 0) + transaction.value
         )
-        value_per_member = transaction.value / len(transaction.indebted)
+        total_transaction_weight = sum(
+            transaction.weights.get(member, 1) for member in transaction.indebted
+        )
 
         for member in transaction.indebted:
-            balances[member] = balances.get(member, 0) - value_per_member
+            debt_ratio = transaction.weights.get(member, 1) / total_transaction_weight
+            debt = transaction.value * debt_ratio
+            balances[member] = balances.get(member, 0) - debt
 
     return balances

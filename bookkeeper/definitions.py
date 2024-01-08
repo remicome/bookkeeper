@@ -1,2 +1,2 @@
-from ._member import Member, Discount
-from ._transaction import Transaction
+from ._member import Discount, Member
+from ._transaction import Food, Transaction

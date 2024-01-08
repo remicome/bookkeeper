@@ -28,3 +28,17 @@ class Transaction:
     def __post_init__(self):
         if self.weights is None:
             self.weights = {member: 1.0 for member in self.indebted}
+
+
+@dataclasses.dataclass
+class Food(Transaction):
+    """A food transaction, which has a special weighting rule.
+
+    These are weighted according to the member's discount ratio and duration of stay.
+    """
+
+    def __post_init__(self):
+        self.weights = {
+            member: member.discount.value * member.stay_duration
+            for member in self.indebted
+        }

@@ -14,25 +14,24 @@ Petit script pour calculer les comptes de Névache.
   Celleux-ci payent au prorata de leur durée de séjour.
 
 ## Comptes Névache 2023
-- Anouk owes 265.20 to Vincent.
-- Antoine owes 1.88 to Alice.
-- Antoine owes 38.43 to Aurore.
-- Claire owes 281.49 to Vincent.
-- Corentin owes 335.31 to Vincent.
-- Delphin owes 356.23 to Vincent.
-- Émilie owes 197.37 to Vincent.
-- Julie owes 392.74 to Vincent.
-- Léa owes 279.61 to Vincent.
-- Marylou owes 88.12 to François.
-- Océane owes 0.82 to Alice.
-- Océane owes 0.94 to Raphaël.
-- Océane owes 37.78 to Vincent.
-- Océane owes 43.66 to François.
-- Olivier owes 266.45 to Vincent.
-- Rémi owes 107.23 to Vincent.
-- Sam owes 157.46 to François.
-- Sophie owes 97.02 to Aurore.
-- Thomas owes 298.85 to Vincent.
-- Virgile owes 260.86 to Vincent.
-- Yaël owes 247.43 to Aurore.
-
+- Anouk doit 265.20 à Vincent.
+- Antoine doit 1.88 à Alice.
+- Antoine doit 38.43 à Aurore.
+- Claire doit 281.49 à Vincent.
+- Corentin doit 335.31 à Vincent.
+- Delphin doit 356.23 à Vincent.
+- Émilie doit 197.37 à Vincent.
+- Julie doit 392.74 à Vincent.
+- Léa doit 279.61 à Vincent.
+- Marylou doit 88.12 à François.
+- Océane doit 0.82 à Alice.
+- Océane doit 0.94 à Raphaël.
+- Océane doit 37.78 à Vincent.
+- Océane doit 43.66 à François.
+- Olivier doit 266.45 à Vincent.
+- Rémi doit 107.23 à Vincent.
+- Sam doit 157.46 à François.
+- Sophie doit 97.02 à Aurore.
+- Thomas doit 298.85 à Vincent.
+- Virgile doit 260.86 à Vincent.
+- Yaël doit 247.43 à Aurore.

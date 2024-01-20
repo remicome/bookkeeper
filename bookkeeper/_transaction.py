@@ -42,3 +42,29 @@ class Food(Transaction):
             member: member.discount.value * member.stay_duration
             for member in self.indebted
         }
+
+
+@dataclasses.dataclass
+class Housing(Transaction):
+    """A housing transaction, which has a special weighting rule.
+
+    These are weighted according to the member's discount ratio. Each member pays for
+    the maximum number of nights (the logic being that we have to rent a big place for
+    everyone). An exception is made for members staying less than 60% of the maximum
+    stay duration: in that case, the price to pay is weighed by the member's duration of
+    stay.
+    """
+
+    def __post_init__(self):
+        maximum_stay_duration = max(member.stay_duration for member in self.indebted)
+
+        def duration_weight(member):
+            if member.stay_duration < 0.6 * maximum_stay_duration:
+                return member.stay_duration
+            else:
+                return maximum_stay_duration
+
+        self.weights = {
+            member: member.discount.value * duration_weight(member)
+            for member in self.indebted
+        }

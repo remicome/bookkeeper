@@ -8,7 +8,7 @@ def test_food():
     transaction = Food(
         value=100,
         payer=alice,
-        indebted=[alice, bob],
+        members=[alice, bob],
     )
     assert 2 * transaction.weights[alice] == 0.75 * transaction.weights[bob]
 
@@ -20,7 +20,7 @@ def test_housing_maxed_out():
     transaction = Housing(
         value=100,
         payer=alice,
-        indebted=[alice, bob],
+        members=[alice, bob],
     )
     assert transaction.weights[alice] == 0.75 * transaction.weights[bob]
 
@@ -32,6 +32,6 @@ def test_housing_halved():
     transaction = Housing(
         value=100,
         payer=alice,
-        indebted=[alice, bob],
+        members=[alice, bob],
     )
     assert 2 * transaction.weights[alice] == 0.75 * transaction.weights[bob]

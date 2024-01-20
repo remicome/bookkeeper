@@ -15,7 +15,7 @@ def test_simple_settlement():
         Transaction(
             value=100,
             payer=members[0],
-            indebted=members,
+            members=members,
         )
     ]
     paiements = settle(transactions)

@@ -10,7 +10,7 @@ def test_balance():
         Transaction(
             value=100,
             payer=first,
-            indebted=[first, second],
+            members=[first, second],
         )
     ]
     balances = balance(transactions)
@@ -25,7 +25,7 @@ def test_weighted_balance():
         Transaction(
             value=100,
             payer=first,
-            indebted=[first, second],
+            members=[first, second],
             weights={first: 3, second: 1},
         )
     ]

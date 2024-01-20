@@ -15,19 +15,19 @@ class Transaction:
         * date: the date of the transaction
         * payer: the group member who actually paid
         * weights: optional ratios of the debt which should be paid by each member
-        * indebted: the group members for which the transaction was issued.
+        * members: the group members for which the transaction was issued.
     """
 
     value: float
     payer: Member
-    indebted: typing.Set[Member]
+    members: typing.Set[Member]
     description: str = ""
     weights: None | typing.Mapping[Member, float] = dataclasses.field(default=None)
     date: datetime.date = dataclasses.field(default_factory=datetime.date.today)
 
     def __post_init__(self):
         if self.weights is None:
-            self.weights = {member: 1.0 for member in self.indebted}
+            self.weights = {member: 1.0 for member in self.members}
 
 
 @dataclasses.dataclass
@@ -40,7 +40,7 @@ class Food(Transaction):
     def __post_init__(self):
         self.weights = {
             member: member.discount.value * member.stay_duration
-            for member in self.indebted
+            for member in self.members
         }
 
 
@@ -56,7 +56,7 @@ class Housing(Transaction):
     """
 
     def __post_init__(self):
-        maximum_stay_duration = max(member.stay_duration for member in self.indebted)
+        maximum_stay_duration = max(member.stay_duration for member in self.members)
 
         def duration_weight(member):
             if member.stay_duration < 0.6 * maximum_stay_duration:
@@ -66,5 +66,5 @@ class Housing(Transaction):
 
         self.weights = {
             member: member.discount.value * duration_weight(member)
-            for member in self.indebted
+            for member in self.members
         }

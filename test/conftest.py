@@ -11,7 +11,7 @@ def transactions(members):
         Transaction(
             value=random.randint(0, 10),
             payer=random.choice(members),
-            indebted=random.sample(members, k=random.randint(1, len(members))),
+            members=random.sample(members, k=random.randint(1, len(members))),
         )
         for _ in range(10)
     ]

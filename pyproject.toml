@@ -5,3 +5,7 @@ description = "Bookkeeping for group trips."
 authors = [
     {name = "Rémi Côme", email ="remi.come@gmx.com"},
 ]
+
+[project.optional-dependencies]
+test = ["pytest"]
+dev = ["black", "flake8", "isort"]
